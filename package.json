@@ -1,0 +1,44 @@
+{
+  "name": "asciipunks--names",
+  "author": {
+    "name": "Kyle Holzinger",
+    "email": "kylelholzinger@gmail.com",
+    "url": "kyleholzinger.com"
+  },
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "compile": "./node_modules/.bin/truffle compile",
+    "console": "./node_modules/.bin/truffle console",
+    "ganache": "ganache-cli --deterministic",
+    "migrate": "./node_modules/.bin/truffle migrate",
+    "migrate:mainnet": "./node_modules/.bin/truffle migrate --network mainnet --reset --compile-all",
+    "migrate:rinkeby": "./node_modules/.bin/truffle migrate --network rinkeby --reset --compile-all",
+    "verify:mainnet": "./node_modules/.bin/truffle run verify AsciiPunksNames --network mainnet",
+    "verify:rinkeby": "./node_modules/.bin/truffle run verify AsciiPunksnames --network rinkeby",
+    "prettier": "prettier --tab-width 2 --write 'contracts/**/*.sol'",
+    "sale:start:rinkeby": "./node_modules/.bin/truffle exec --network rinkeby --compile ./scripts/startSale.js",
+    "sale:pause:rinkeby": "./node_modules/.bin/truffle exec --network rinkeby --compile ./scripts/pauseSale.js",
+    "test": "mocha --exit --recursive",
+    "watch-tests": "./scripts/watch-tests.sh"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.0.0-rc.0",
+    "dotenv": "^8.2.0",
+    "ganache-cli": "^6.12.2",
+    "truffle": "^5.2.2"
+  },
+  "devDependencies": {
+    "@openzeppelin/test-environment": "^0.1.9",
+    "@openzeppelin/test-helpers": "^0.5.10",
+    "@truffle/hdwallet-provider": "1.2.1",
+    "chai": "^4.3.3",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^8.1.2",
+    "prettier": "^2.2.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.6",
+    "truffle-plugin-verify": "^0.5.7"
+  }
+}
