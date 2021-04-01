@@ -5,7 +5,6 @@ import "./AsciiPunks/AsciiPunks.sol";
 
 contract AsciiPunksNames {
   mapping(uint256 => string) names;
-  uint256 private constant PRICE = 10000000000000000;
   AsciiPunks private punks;
 
   constructor() {}
@@ -19,9 +18,11 @@ contract AsciiPunksNames {
 
   function setPunksAddress(address payable _address) public returns (address) {
     punks = AsciiPunks(_address);
+
+    return _address;
   }
 
-  function ownerOf(uint256 tokenId) public returns (address) {
+  function ownerOf(uint256 tokenId) public view returns (address) {
     address owner = punks.ownerOf(tokenId);
 
     return owner;
@@ -29,11 +30,9 @@ contract AsciiPunksNames {
 
   function setName(uint256 tokenId, string memory newName)
     external
-    payable
     returns (string memory)
   {
     require(msg.sender == ownerOf(tokenId), 'This method is only callable by the owner of the token');
-    require(msg.value >= PRICE, ' Insufficient ether');
 
     names[tokenId] = newName;
 

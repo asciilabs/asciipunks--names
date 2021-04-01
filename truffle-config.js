@@ -35,7 +35,7 @@ module.exports = {
           process.env.INFURA_RINKEBY_URL
         ),
       network_id: 4,
-      gas: 100000,
+      gas: 10000000,
       skipDryRun: true,
     },
   },
