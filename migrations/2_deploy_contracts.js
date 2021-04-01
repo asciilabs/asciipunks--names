@@ -1,8 +1,11 @@
-const ConvertLib = artifacts.require("ConvertLib");
-const MetaCoin = artifacts.require("MetaCoin");
+const AsciiPunksNames = artifacts.require("AsciiPunksNames");
+const AsciiPunkFactory = artifacts.require('AsciiPunkFactory')
+const AsciiPunks = artifacts.require('AsciiPunks')
 
 module.exports = function(deployer) {
-  deployer.deploy(ConvertLib);
-  deployer.link(ConvertLib, MetaCoin);
-  deployer.deploy(MetaCoin);
+  deployer.deploy(AsciiPunkFactory);
+  deployer.link(AsciiPunkFactory, [AsciiPunks, AsciiPunksNames]);
+  deployer.deploy(AsciiPunks);
+  deployer.link(AsciiPunks, AsciiPunksNames);
+  deployer.deploy(AsciiPunksNames);
 };
