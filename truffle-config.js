@@ -24,7 +24,7 @@ module.exports = {
           process.env.INFURA_MAINNET_URL
         ),
       network_id: 1,
-      gas: 100000,
+      gas: 1000000,
       gasPrice: web3.utils.toWei(process.env.GAS_PRICE || '130', 'gwei'),
       skipDryRun: true,
     },

@@ -7,19 +7,15 @@ contract AsciiPunksNames {
   mapping(uint256 => string) names;
   AsciiPunks private punks;
 
-  constructor() {}
+  constructor(address payable _punksAddress) {
+    punks = AsciiPunks(_punksAddress);
+  }
 
   modifier validNFToken(uint256 tokenId) {
     address owner = punks.ownerOf(tokenId);
     require(owner != address(0), "ERC721: query for nonexistent token");
 
     _;
-  }
-
-  function setPunksAddress(address payable _address) public returns (address) {
-    punks = AsciiPunks(_address);
-
-    return _address;
   }
 
   function ownerOf(uint256 tokenId) public view returns (address) {
